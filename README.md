@@ -30,3 +30,14 @@ A label selector is just a fancy name of the mechanism that enables the client/u
 
 
 This Deployment configuration will spin-up 3 Pods (replicas: 3) and will monitor to make sure it always has 3 Pods alive. How will it target those Pods? By their app: nginx label. The same goes with the Service configuration that is targeting Pods with the label app: nginx. Any Pod without this label, will not be exposed through this Service (“my-service”). This is why you must configure labels correctly or Kubernetes will not work as you expect it to.
+
+
+with namespaces we alos limit the usage of resources
+services: access from all ns
+configmap and secrets: no
+node and volumes: cant be put in a ns
+Namespaces: kubesystem (dont modify)
+kubepublic(cluster info)
+kube-node-lease(heartbeat)
+default(we use this/we can also create new namespaces)
+kubectl create namespaces
