@@ -12,7 +12,7 @@ spec:
       app: mynginxapp
   template:
     metadata:
-      name: nginxcontainer1
+      name: nginxpod1
       labels:
         app: mynginxapp
     spec:
