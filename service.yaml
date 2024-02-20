@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: nginxreplicaset
+spec:
+  selector:
+    matchLabels:
+      app: mynginxapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetport: 8080
+      
