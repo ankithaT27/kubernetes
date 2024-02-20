@@ -18,3 +18,5 @@ spec:
       containers:
         - name: nginxcontainer1
           image: nginx
+          ports:
+           - containerPort: 8080
