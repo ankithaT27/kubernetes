@@ -41,3 +41,9 @@ kubepublic(cluster info)
 kube-node-lease(heartbeat)
 default(we use this/we can also create new namespaces)
 kubectl create namespaces
+
+
+Services:
+Default: Cluster IP
+* there are 2 containers inside a pod which listening at 3000 and 9000
+* pod has an ip whicb is given by the node, i.e if you are creating a RS and you have 3 pods with IP 10.34.4.5, 10.43.4.6, 10.33,5.7 now this means 2 of the pods are in the same node
