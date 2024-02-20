@@ -16,6 +16,17 @@ kubeproxy is allow network communication to your Pods from network sessions insi
 Command used for yaml files:
 kubectl apply -f filename.yaml
 
+4 parts:metadata(name)
+specification:what ware you creating,apiverion
+thirs part: status(genearted by kubernetes alone)
+
 A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the container
 
 A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time. As such, it is often used to guarantee the availability of a specified number of identical Pods.
+
+Labels are nothing more than custom key-value pairs that are attached to objects and are used to describe and manage different Kubernetes resources
+
+A label selector is just a fancy name of the mechanism that enables the client/user to target (select) a set of objects by their labels. 
+
+
+This Deployment configuration will spin-up 3 Pods (replicas: 3) and will monitor to make sure it always has 3 Pods alive. How will it target those Pods? By their app: nginx label. The same goes with the Service configuration that is targeting Pods with the label app: nginx. Any Pod without this label, will not be exposed through this Service (“my-service”). This is why you must configure labels correctly or Kubernetes will not work as you expect it to.
