@@ -9,5 +9,6 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetport: 8080
-      
+      targetPort: 8080
+
+  #The ips of the pods that you create will be prsent in "Endpoints:10.42.0.10:8080,10.42.0.12:8080,10.42.0.9:8080" part when you do the kubectl describe service
