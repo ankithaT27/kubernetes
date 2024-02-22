@@ -1,0 +1,15 @@
+we’ve defined a headless service named “my-service
+. We’ve set the clusterIP field to "None" to indicate that we want a headless service. We've also specified a selector to associate pods with the service. The ports field specifies the ports that the service will forward traffic to.
+
+Once you’ve created a headless service, you can access each pod associated with the service through DNS. The DNS record for each pod will be in the format <pod-name>.<headless-service-name>.<namespace>.svc.cluster.local.
+
+
+Database Clusters
+If you’re running a database cluster in Kubernetes, you may want to use a headless service to directly address each database pod. This can be useful if you need to perform maintenance on a specific pod or if you want to route traffic to a specific pod for load-balancing purposes.
+
+
+
+Nodeport:
+We define a service named frontend that targets pods labeled with app: frontend by setting a selector. The service exposes port 80 and forwards the traffic to the pods’ port 8080. We set the service type to NodePort, and Kubernetes exposes the service on a specific port on a qualifying node within the cluster.
+
+When we create a NodePort service, Kubernetes assigns a port number from a predefined range of 30000-32767. Additionally, we can specify a custom port number by adding the nodePort field to the service definition:
