@@ -1,0 +1,7 @@
+with ingress, we can specify reqyests coming to which path should go to which service,
+eg:
+requests coming to abc.com/users should go to service A and abc.com/projects should go to service B, these are called ingress rules
+Ingress controller should be there to process ingress rules
+
+How does it work?
+the request coming from user, first hits LB, then ingress controller checks for rules, then the correct service and then pod
