@@ -1,0 +1,9 @@
+Stateless appln - Deployment
+Staeful appln- DB , Sttefule sets (we can rep;icate this as well)
+Note:
+Replica pods created are not identical, they have their own identity
+* Master DB and Slave DB concept
+Conside we have 3 replicas, a newly created replia will clone all the data from previous replica
+Deployment assigns a random hash name for all pods but nit S.A , it assigns fixed ordered names
+The new replica DB will be created only after the previous one is fully up and running and deletion always starts from last pod
+when a pod restarts, the IP address change, but name and enpoints remain same
