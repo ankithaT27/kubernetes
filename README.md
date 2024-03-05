@@ -46,4 +46,9 @@ kubectl create namespaces
 Services:
 Default: Cluster IP
 * there are 2 containers inside a pod which listening at 3000 and 9000
-* pod has an ip whicb is given by the node, i.e if you are creating a RS and you have 3 pods with IP 10.34.4.5, 10.43.4.6, 10.33,5.7 now this means 2 of the pods are in the same node
+* pod has an ip whicb is given by the node from its rangei.e if you are creating a RS and you have 3 pods with IP 10.34.4.5, 10.34.4.6, 10.33,5.7 now this means 2 of the pods are in the same node which was given from its range 10.34.4.x
+* The service is now assigned an IP of its own and works on a port again which gets requests from ingress
+
+-->Clusterip: when the communication happens within the cluster
+-->haeadless services--> send requests to 1 particular pod, eg: using database, since pod ip is needed for it. we can use the DNS LOOKUP for this purpose, set the cluster ip to none and the DNS LOOKUP wil return the pod ip rather than CIP.
+-->nodeport-->requests comes to a single port always
