@@ -1,0 +1,19 @@
+apVersion:
+kind: StorageClass
+Metadata:
+  name: sc
+ provisioner: k8.io/minikube/hostpath  (ebs/disk cam also be used)
+ volumeBindingMode: Immedidate
+ reClaimPolicy: Delete/Retain
+
+ pv is created as soon as pvc is created
+ delete: whenever we dlt pvc, pv is alo dleted
+  retain: whenever we dlt pvc, pv is not dleted
+
+ now this storage class will be used with pvc.yaml file
+ spec:
+   storageClassName: "sc" 
+   accessmodes: ReadWriteMany
+   resources:
+     requests:
+      storage: 3Gi
