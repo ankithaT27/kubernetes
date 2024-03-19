@@ -37,6 +37,12 @@ But this again doesnt solve the problem of multi node data persistance
 Persistant volume:
 created using yaml 
 
+Now in deployment.yaml
+
+volumes: 
+  name: mongovolume
+  persistantVolumeClaim:
+    claimName: momgo-pvc
 
 
 
