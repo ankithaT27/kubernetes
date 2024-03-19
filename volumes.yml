@@ -1,0 +1,47 @@
+## deployment file
+apVersion: v1/1
+kind: Deployment
+Metadata:
+  name: Mongodeployment
+Spec:
+  Replicas: 3
+  selectors:
+    matchlabels: 
+        app:mongo
+  template:
+    labels: app:mongo
+  spec:
+     conatiners:
+       image: mongo
+       name: mongo
+       env:
+         -name: MONGO_INIT_DB_USERNAME
+          value: admin
+         -name: MONO_INIT_DB_PASSWORD
+          value: admin
+
+
+#service file
+apiVesrion:
+kind: Service
+metadata:
+  name: Mongoservice
+spec:
+  ports:
+     -port: 27014
+      protocol: TCP
+      targetport: 27017
+      nodePort: 32000
+  selectors:
+      app: mongo
+      type: nodePort
+      
+
+
+
+
+
+
+
+
+
