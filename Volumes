@@ -1,8 +1,0 @@
-Uses:
-One of the key benefits of using Persistent Volumes is their ability to decouple storage from individual pods. This decoupling allows for greater flexibility in managing pods
-The data stored in a Persistent Volume remains intact even if a pod is deleted or rescheduled. Additionally, Persistent Volumes support various access modes, allowing multiple pods to read and write data simultaneously.
-
-Access Modes
-ReadOnlyMany(ROX) allows being mounted by multiple nodes in read-only mode.
-ReadWriteOnce(RWO) allows being mounted by a single node in read-write mode.
-ReadWriteMany(RWX) allows multiple nodes to be mounted in read-write mode.
