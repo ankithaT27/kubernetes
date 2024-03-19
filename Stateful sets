@@ -1,9 +1,9 @@
-Stateless appln - Deployment
-Staeful appln- DB , Sttefule sets (we can rep;icate this as well)
-Note:
-Replica pods created are not identical, they have their own identity
-* Master DB and Slave DB concept
-Conside we have 3 replicas, a newly created replia will clone all the data from previous replica
-Deployment assigns a random hash name for all pods but nit S.A , it assigns fixed ordered names
-The new replica DB will be created only after the previous one is fully up and running and deletion always starts from last pod
-when a pod restarts, the IP address change, but name and enpoints remain same
+eg: for any appln aunuthentication, we set the flag as authenticated=true in the db when the person has already logged in to the application before so rather than in the app. these type of app are called stateful sets
+
+problem:
+i) all deployments use a common Persistant storage. this is not a good approach for matser-slave
+ii) whenever we create an db application: master should come up 1st, replica 1 copies data from master, 2 copies data from 1.
+all the time data should be copied from its previous replica whenevr the pod comes up, but if we use deployment all 3 replicas are created at the sametime
+same- last pod deleted first 
+iii) even when pod restarts, there should be sticky identity and it should get teh same name again which is not possible in deploynent
+iv) the same sticky volume is also attached to each pod, eg: all write requests should go to master
