@@ -14,12 +14,21 @@ Spec:
      conatiners:
        image: mongo
        name: mongo
+       volumemounts:
+          mountpath: /data/db
+          name: mongovolume
        env:
          -name: MONGO_INIT_DB_USERNAME
           value: admin
          -name: MONO_INIT_DB_PASSWORD
           value: admin
-
+       volumes:
+            #this is for empty dir
+            name: mongovolume
+              emptydir: {}   
+            #this is for hostpath
+              hostpath:
+              path: /data      
 
 #service file
 apiVesrion:
