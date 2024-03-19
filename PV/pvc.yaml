@@ -1,0 +1,14 @@
+spec:
+   storageClassName: " " 
+   accessmodes: ReadWriteMany
+   resources:
+     requests:
+      storage: 3Gi
+
+This persistant volume claim should be attached in the service.yaml
+
+to be used in Deployment.yaml
+volumes: 
+  name: mongovolume
+  persistantVolumeClaim:
+    claimName: momgo-pvc
