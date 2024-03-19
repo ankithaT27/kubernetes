@@ -20,6 +20,11 @@ kubectl apply -f filename.yaml
 specification:what ware you creating,apiverion
 thirs part: status(genearted by kubernetes alone)
 
+
+
+
+commands:
+kubectl api-resources | grep statefulset
 A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the container
 
 A ReplicaSet's purpose is to maintain a stable set of replica Pods running at any given time. As such, it is often used to guarantee the availability of a specified number of identical Pods.
