@@ -1,15 +1,19 @@
 Package mgr for kubernetes
-Package yaml files and distributes them in public and pvt repos
+Package yaml files or appln manifest files and distributes them in public and pvt repos
 Eg: Elastic stack installation might take a lot of efforts to be put on as we need to configire yaml files for its secrets, configmap, services etc
 A package consisting of this ready yaml files to use at anytime to make it available easily is called Helm manager
-command: Helm install chartname
+command: Helm create chartname
 
+****************************************************************************************************************************
+
+creates a dir (bundles of kube files)
 Structure:
+*chart.yaml* has metdata about the chart (chartname,version etc)
 mychart folder consisting of chart name
-chart.yaml has metdata about the chart
+
 values.yaml has values
-charts-- consists of cgarts
-template.yaml which willl be filled with values from values.yaml, but also these values can be overwriiten with the command
+charts-- consists of charts
+template.yaml has all the skeleton of config files which willl be filled with values from values.yaml, but also these values can be overwriiten with the command
 Helm install --values=myvalue.yaml chartname
 
 
