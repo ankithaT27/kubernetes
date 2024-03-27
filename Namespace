@@ -1,0 +1,8 @@
+4 namespaces:
+
+used to create group of resources inside cluster.
+Run services/application with the same in different namespaces, when an appln in utilizing max resources it can be moved to a different namespace.
+Default (when we dont specify any namespace)
+Kube public - for objects where the vivisbiloty is public
+Kube system
+kube node lease - sends heartbeat to node to determaine the healthy nodes
