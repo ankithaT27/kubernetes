@@ -1,7 +1,57 @@
 with ingress, we can specify reqyests coming to which path should go to which service,
 eg:
-requests coming to abc.com/users should go to service A and abc.com/projects should go to service B, these are called ingress rules
+requests coming to abc.com/users should go to service A and xyz.com should go to service B, these are called ingress rules
 Ingress controller should be there to process ingress rules
+so any reqyest coming will first go to LB, from then it goes to infress controller which then pocess rules and then hits the correct service
+
 
 How does it work?
 the request coming from user, first hits LB, then ingress controller checks for rules, then the correct service and then pod
+Ingress controller: 
+HAProxy
+Traffeik
+Nginx controller
+
+sample:
+
+apiVersion:
+Kind:
+meadata:
+spec:
+ rules:
+   - host: todo.com
+     http:
+       paths:
+        -path: /
+         pathType: prefix
+        backend:
+           service: nginx-service
+          port:
+             number:8082
+
+Notes: using minikube, its not possible to create a domian name called todo.com, so we get the minikube ip address and we map the todo.com with ip
+
+so update /etc/hosts file by adding this ip
+Format:
+ip todo.com
+
+
+
+path based routing, has 2 seperate paths and only 1 host , i.e w different websites (eg: todo-api.com, todo-ui.com)
+are accessed using same host todo.com
+in the path we mention requests coming to (/) will go to todo-api and reqyests coming to  path /ui will go to todo-ui.com
+
+host-based routing, it has 2 different hosts and 2 applications are defined using 2 different hosts here.
+eg: host1 (todo-api.com) and host2 will be (todo-ui.com) but path will remain the same may be path :/
+
+
+Note: we can also add a TLS certificate in ingress by first saving it as a secret
+usage in nginx ingress.yml file
+spec:
+ tls:
+  sectret: certfilename
+  host:nginxdemo
+
+
+
+
