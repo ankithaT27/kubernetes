@@ -6,3 +6,10 @@ Default (when we dont specify any namespace)
 Kube public - for objects where the vivisbiloty is public
 Kube system- System processes like Master and kubectl processes are deployed in this namespace; thus, it is advised not to create or modify the namespace
 kube node lease - sends heartbeat to node to determaine the healthy nodes
+
+
+when we need not mention namespace everysingletime, install kubens which takes care f switching the namespace.
+eg: kubens mynamespace will switch to a namesace called mynamespace
+
+If you want to access resources which are in another namespace, then we need to append the namespace at the end of the servicenaame
+servicenaame.namespace.
