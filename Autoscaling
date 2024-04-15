@@ -1,0 +1,29 @@
+3 types:
+HPA: Horizontak pod autoscaling  -->we add more pods - 1pod--->5 pods
+VPA: Vertical pod autoscaling--> increase the resources of a pod
+CA: Cluster autoscaling --> add more and mpre nodes in a cluster --> 1 node --> 4 nodes
+
+K8 has Horizontal pod autoscaler, which does autoscaling
+Process: eg:
+* Kubelet monitors the cpu and memory utilization of the pod every 10 seconds and it sends a report to my API server every min.
+* this in turn goes tol my horizonatl pod autoscaling controller, it checks metrics against our metrics agains our requiremmet
+* spinning/ =termination taken care by replication controller
+
+Formula--
+d=ceil[a*(c/t)]
+d=desired no of replicas
+a=actual no of replicas currently running
+c=current metric value
+t=target value
+d=ceil[2*(90/70)]
+
+commands:
+kubectl get hpa
+kubectl describe hpa hpaname
+
+kubectl top pods
+
+
+we can use requests: parameter in yaml file to specify the min no of vcpu and memory that kubernetes should start the pods with 
+we can use limits: parameter to specify the max amount of cpy and memory a pod can use, k8 will not allocate cpu or memory to pods beyond this.
+do the lmitations at namespace level: resource quota
