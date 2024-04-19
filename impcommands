@@ -1,0 +1,15 @@
+kubectl get pods -o wide
+kubectl get pods -o yaml
+kubectl apply -f filename.yaml
+kubectl describe pods podname
+kubectl delete pod podname
+kubectl port-forward nginx 8083:80
+kubectl logs podname
+kubectl logs podname -f (watch it realtime)
+kubernetes scale --rep;icas=3 deploymentname
+kubectl rollout history deploymmet/nginxdeployment ( used to list down all the previous deployments done from the same yaml file)
+(add annotations in yaml file to mention the causes of rollouts)
+kubectl rollout undo deploymmet/nginxdeployment --to-revision=1 (this rolls out to the first revision of our deployment)
+kubectl rollout status deploymmet/nginxdeployment
+
+Nodeport- 30000-32767
