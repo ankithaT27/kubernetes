@@ -1,0 +1,36 @@
+CM- gets heartbeats from pods, node monitor period is 5 sec(node monitor period)
+grace period is 40s meaning it will wait 40seconds until it marks node as unhealthy and waits 5 second again before removing it
+scheduler schedules using 2 thibngs:
+it filters nodes
+it ranks nodes
+
+kubectk run nginx --image ngunx
+kubectl replace -f replica.yaml
+kubectk scale --replicas=6 replica.yaml or nameof RS
+kubectl get pods --namespace=kubesystem
+kubecrl create namespace dev
+resoyrce quota yaml file limits resource utilisation like cpu etc to its own NS
+
+7 / 7
+What DNS name should the Blue application use to access the database db-service in the dev namespace?
+db-service.dev.svc.cluster.local
+kubectl expose pod redis --port=6379 --name redis-service
+kubectl create deployment  webapp --image=kodekloud/webapp-color --replicas=3 -n=mynamespace
+
+kubectl run httpd --image=httpd:alpine --port=80 --expose
+edit files:
+kubectl replace commands
+kubectl get pods --selector apps=myapp
+
+what happens if scheduler isnt there?
+All pods continue to be in pending state thus we can use
+ nodename:node02 component in the file while creating yaml file
+if the pod is already created and you want to assign it to a pod it can be done with the help of a curl command using post request
+
+Taints and tolerations:
+stop a node from getting pod assigned to it
+only the pod that has tolerations assigned to it will be scheduled on that node
+so be default a taint will be applied on master so we dont see the scheduling here
+
+
+kubectl taint nodes node01 spray=mortein:NoSchedule
