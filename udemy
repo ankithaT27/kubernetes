@@ -38,3 +38,8 @@ kubectl taint nodes node01 spray=mortein:NoSchedule
 node selectors: select the nodes to place the pods on 
 we do it by specifiying lables:
 kubectl label nodes node-1 size=large (this way we mark the largest node ) and we define the node selectors as size:Large in deployement file
+
+
+
+kubectl apply:
+creates live object config file once the apply command in run and also a json file is created called last object config
