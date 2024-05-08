@@ -17,3 +17,13 @@ The Ingress network manages external access to services in the cluster. Specific
 Labels are any key-value pairs that are used to identify that pod. The pod gets its label through the deployment which is like a blueprint for the pod before the pod is created. The Selector matches the label. Labels and selectors are required, to make connections between deployment, pods, and services
 
 A headless Service is a type of Kubernetes Service that does not allocate a cluster IP address. Instead, a headless Service uses DNS to expose the IP addresses of the Pods that are associated with the Service. This allows you to connect directly to the Pods, instead of going through a proxy.
+
+
+resource request : add resources: requests sectiona nd add cpu and memory reqyirement
+limits: add resources: limits sectiona nd add cpu and memory limit
+when pod consumes say 2gb of memory and that is the limit, then the pod will be killed due to OOM error, but if CPU utilization is increased the cpu will throttle.
+
+ideal would be set request to say 1 vcpu and limits need not be set as if any other pods require more cpu then it can be done without killing the other pods as min 1 cpu will always be there.
+so istaed of mentioning everything seperately in each yaml file,w e can create a limit-range-cpu.yaml and limit-range-memory.yaml and this applies at namespace level.(this applies for each pod like how much cpu each pod should consume)
+
+set resource quotas at namespace level to limit the usage at namespace level'- this applies togther to all resources
