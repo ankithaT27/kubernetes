@@ -1,3 +1,14 @@
+Img restart ploicy:
+The Always restart policy is the default policy in Kubernetes.
+By using this policy, containers will restart when they terminate, regardless of their exit status. In other words, this policy doesn’t care why the container exited, whether it is a successful completion or an error. It will always make sure that the container is running.
+
+The OnFailure restart policy will restart a container only if the container process exits with an error
+
+
+
 ImagePullBackoff:
 invalid image, improper permissions
-crashloopbackoff:
+crashloopbackoff: pod is grtting crsahed multiple times. k8 is trying to start the pod doing backoff delay, may be caused by configuration mistakes of giving wrong env variables, memory limits
+container creating->error->crashloopbackoff->error->loop
+liveness proble failing - k8 tries to restart the pod, period healthcheck informs pod how often to check health of the pod
+resource quota - namespace level vs resurce limit -pod level
