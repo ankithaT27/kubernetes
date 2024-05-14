@@ -8,6 +8,7 @@ kubectk run nginx --image ngunx
 kubectl replace -f replica.yaml
 kubectk scale --replicas=6 replica.yaml or nameof RS
 kubectl get pods --namespace=kubesystem
+kubectl get pods --all-namespaces -o wide 
 kubecrl create namespace dev
 resoyrce quota yaml file limits resource utilisation like cpu etc to its own NS
 
@@ -43,3 +44,21 @@ kubectl label nodes node-1 size=large (this way we mark the largest node ) and w
 
 kubectl apply:
 creates live object config file once the apply command in run and also a json file is created called last object config
+
+
+Can k9 function without master plane?
+yes: we can store the yaml files in a directory and kubelet reads info from here 
+this directory can be /etc/k8/manifests from which it is destined to take pod info.
+THese are called statis pods which are created by the kubelet without the intervention of the master plane but we can only create pods and not deployment or services, we will get the path in the pod manifest file
+
+
+K8 can have multiple scheduler
+-> it must have diff names
+
+(SFSB)
+Pods also have priorities assigned to them, so a pod comes and waits in the scheduling queue and the highest priority one is picked first
+then it goes to filter phase and nodes which cannot schedule this pod are filteed out
+then comes the scoring phase- the nodes are scored on the cpu/memory that would be left after the pods are scheduled.
+next is binding phase and pods are binded to node
+This process is done by scheduling plugins
+
