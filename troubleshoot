@@ -8,7 +8,12 @@ The OnFailure restart policy will restart a container only if the container proc
 
 ImagePullBackoff:
 invalid image, improper permissions
+if your image is a private image, use imagepullsecret( imagepull secret can be added to my deploymenr file like any other info but we first create secret using a k8 command)
+first when we give an invalid image name, we get ErrorImagepull error whicb is followed by imagepullbf, k8 waits for sometime tries again and this goes on by adding a delay
+
 crashloopbackoff: pod is grtting crsahed multiple times. k8 is trying to start the pod doing backoff delay, may be caused by configuration mistakes of giving wrong env variables, memory limits
 container creating->error->crashloopbackoff->error->loop
 liveness proble failing - k8 tries to restart the pod, period healthcheck informs pod how often to check health of the pod
 resource quota - namespace level vs resurce limit -pod level
+
+
