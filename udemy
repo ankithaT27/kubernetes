@@ -34,6 +34,7 @@ only the pod that has tolerations assigned to it will be scheduled on that node
 so be default a taint will be applied on master so we dont see the scheduling here
 
 
+
 kubectl taint nodes node01 spray=mortein:NoSchedule
 
 node selectors: select the nodes to place the pods on 
@@ -61,4 +62,28 @@ then it goes to filter phase and nodes which cannot schedule this pod are filtee
 then comes the scoring phase- the nodes are scored on the cpu/memory that would be left after the pods are scheduled.
 next is binding phase and pods are binded to node
 This process is done by scheduling plugins
+
+kubectl logs -f webapp-1
+kubectl logs -f podname containername
+
+
+Rolling updates:
+when we first create a deployment, it creates a rollout-> new rollout creates -->new revision--> 
+then we upgrade the container-->new rollout->new reviosn
+
+kubectl rollout status deploymentname
+kubectl rollout history deploymentname
+kubectl rollout undo deploymentname
+kubectl describe deployment (get deploymemt statergy)
+kubectl edit deployment frontend
+
+different deployment stratergies:
+1)Recreate:
+destroy existing instances of all aplln and create a new one but we need appln downtime
+when we apply the replicaset will be taken down to 0 and then again comes back to the specified no.
+
+2)Rolling update:
+we take down older version and bring new one, one by one (default)
+
+
 
