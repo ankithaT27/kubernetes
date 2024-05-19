@@ -102,4 +102,42 @@ when we apply the replicaset will be taken down to 0 and then again comes back t
 we take down older version and bring new one, one by one (default)
 
 
+using args command in .yaml file eg: args: ["10"]
+it overrides the cmd command of the docker 
+using "command" overrides the entrypoint command of the docker
+
+always take the env variables from the configmap file and add an additional attribute called envfrom in the pod definition file of deployment
+
+"spec:
+  containers:
+  - env:
+    - name: APP_COLOR
+      value: green
+    image: kodekloud/webapp-color
+    name: webapp-color"
+
+ kubectl get configmaps
+
+secrets-->
+echo -n "secrettoencrypt' | base64
+echo -n "secrettoencrypt' | base64 --decode
+*************************************************************************************************************************
+Security: controlling access to api-server ( access )
+authentication: token, user id -pw, ldap, 
+rbac (role based access)
+pods can access other pods inside cluster
+
+steps: kubeapi server authenticates: we can give authentication through ldap, or static files like below
+create a csv file containing username,id and password using basic auth file, this can conatin group also
+alrenative is using a token auth file instaed of pw file
+
+Certificates: necessat btw 2 parties as a source of trust for any kind of activities
+eg: makes sure communication btw user and web service is encrytpted
+we encrypt the data and send a key seperatley to decrypt it-->symmentric encryption
+pvt key and public key is used seperately-->assym 
+
+
+
+Authorization:
+RBAC,Node,ABAC,wenhook
 
