@@ -41,3 +41,8 @@ running a node monitoring daemon on every node
 lubectl get daemonsets
 d kubectl get daemonsets --all-namespaces
 kubectl describe daemonset kube-flannel-ds --namespace=kube-flannel
+
+************************************************************************************************************************************************************************
+
+Challenges faced:
+Resource sharing-->resource quota, resource limits (requests and limits) this reduces the blast radius, pod leaking memory
