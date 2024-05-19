@@ -29,6 +29,13 @@ All pods continue to be in pending state thus we can use
 if the pod is already created and you want to assign it to a pod it can be done with the help of a curl command using post request
 
 Taints and tolerations:
+taints are of 3 typeS:
+no schedule
+no execute
+preferred no schedule (use it when there are some performance issues on nodes, consider this node as a last option)
+eg: kubectl taint nodes nodename key1=value1:NoSchedule
+
+is useful in upgrading to a newer version, where we make a node unschedulable and then upgrade the node 
 stop a node from getting pod assigned to it
 only the pod that has tolerations assigned to it will be scheduled on that node
 so be default a taint will be applied on master so we dont see the scheduling here
@@ -36,9 +43,18 @@ so be default a taint will be applied on master so we dont see the scheduling he
 
 
 kubectl taint nodes node01 spray=mortein:NoSchedule
+so inorder to identify the node, we add a label to the node
 
 node selectors: select the nodes to place the pods on 
-we do it by specifiying lables:
+the node selector attribute is added to the deployment yml file : this can cause scheduling issues if node is not available
+we do it by specifiying lables in the yaml file of the node
+this can be useful when we need to run the appln on a node having windows installed on it or some kind of arm processors installed on them.
+
+node affinity:
+1)preffered-->if you find the label schedule it or else its ok
+2)required-->same as node selectors
+
+
 kubectl label nodes node-1 size=large (this way we mark the largest node ) and we define the node selectors as size:Large in deployement file
 
 
