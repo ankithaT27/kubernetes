@@ -122,10 +122,49 @@ secrets-->
 echo -n "secrettoencrypt' | base64
 echo -n "secrettoencrypt' | base64 --decode
 *************************************************************************************************************************
+multi container pods:
+share the same lifecycle, share same volumes, nw etc
+kubectl logs <pod-name> -c <container-name>]
+kubectl exec -it <pod-name> [-c <container-name>] -- <command>
+
+init containers:
+Init containers provide a way to ensure that necessary setup tasks are completed before the main application starts, improving reliability and ensuring that the application has everything it needs to run properly.
+Init containers in Kubernetes are specialized containers that run and complete before any other containers in a pod start. They are primarily used to perform setup tasks such as initializing configurations, downloading necessary files, or waiting for external resources to become available before the main application containers start
+Init containers provide a way to ensure that necessary setup tasks are completed before the main application starts, improving reliability and ensuring that the application has everything it needs to run properly.
+
+**********************************************************************************************************************
+
+kubectl drain <node-name>
+kubectl cordon <node-name> (cordoning makes it unschedulable, uncordon to schedule again)
+kubectl drain node01 --ignore-daemonsets (to ignore)
+
+you will see that there is a single pod scheduled on node01 which is not part of a replicaset.
+
+The drain command will not work in this case. To forcefully drain the node we now have to use the --force flag.
+
+
+
+Draining a node in Kubernetes is a process used to safely remove the node from the cluster. It involves evicting all the pods running on the node and preventing new pods from being scheduled onto it. This is typically done when performing 
+maintenance on the node, such as upgrading the Kubernetes version, rebooting the node, or decommissioning it.
+
+
+
+***************************************************************************************************************************
+
+v12.02.33
+major,minor,patch
 Security: controlling access to api-server ( access )
 authentication: token, user id -pw, ldap, 
 rbac (role based access)
 pods can access other pods inside cluster
+
+***********************
+image security
+docker login private-reg.io
+docker run private-reg.io/ankitha2t7/imagename
+kubectl create secret docker-registry 
+kubectl create secret docker-registry my-docker-secret --docker-server=your.registry.example.com --docker-username=your-username --docker-password=your-password --docker-email=your-email@example.com
+
 
 steps: kubeapi server authenticates: we can give authentication through ldap, or static files like below
 create a csv file containing username,id and password using basic auth file, this can conatin group also
