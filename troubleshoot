@@ -16,4 +16,9 @@ container creating->error->crashloopbackoff->error->loop
 liveness proble failing - k8 tries to restart the pod, period healthcheck informs pod how often to check health of the pod
 resource quota - namespace level vs resurce limit -pod level
 
+Detailed Explanation of Different Image Pull Policies
+Always: This policy forces Kubernetes always to pull the image from the repository, regardless of whether it is already present on the node. It ensures that the container always uses the latest version of the image, making it ideal for development environments where updates are frequent.
+IfNotPresent: Kubernetes will pull the image if it is not already present on the node. If the image is on the node, it won't attempt to pull it again. This policy is a balance between resource utilization and ensuring currency. It is useful in production environments where stability and resource optimization are crucial.
+Never: With this policy, Kubernetes will never pull the image from the repository. It will strictly use local images. This policy is suitable for scenarios where you're using custom or pre-loaded images and don't want any automatic updates from remote repositories.
+
 
