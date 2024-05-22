@@ -158,12 +158,43 @@ authentication: token, user id -pw, ldap,
 rbac (role based access)
 pods can access other pods inside cluster
 
-***********************
+***********************************************************************************************************************
+
+cluster upgrades:
+
+kube api-server shouls always have a hugher version, CM and scheudler should be v-1 and kubelet and kube-proxy should be v-2
+kubectl can be v+1,v or v-1
+k8 supports last 2 versions from its recent release only
+upgrade 1:
+ -> upgrade master first and take downtime to upgrade all other nodes
+upgrade type 2:
+->  upgrade nodes one at a time
+upgrade type 3:
+-> just add new nodes and decom old
+
+kubeadm upgrade plan ->command gives all info reg upgrade
+upgrade kubeadm--> apt-get update kubeadm version=
+kubeadm upgrade apply v12.33.0
+
+*************************************************************************************************
+
+backup and restore
+
+take backups of yaml files in github
+take etcd backup 
+
+
 image security
 docker login private-reg.io
 docker run private-reg.io/ankitha2t7/imagename
 kubectl create secret docker-registry 
 kubectl create secret docker-registry my-docker-secret --docker-server=your.registry.example.com --docker-username=your-username --docker-password=your-password --docker-email=your-email@example.com
+
+kubectl create secret docker-registry private-reg-cred --docker-username=dock_user --docker-password=dock_password --docker-server=myprivateregistry.com:5000 --docker-email=dock_user@myprivateregistry.com
+
+later add a key-value in depl.yaml file to fetch this secret:
+
+imagepullsecret: private-reg-cred
 
 
 steps: kubeapi server authenticates: we can give authentication through ldap, or static files like below
@@ -177,6 +208,9 @@ pvt key and public key is used seperately-->assym
 
 
 
+
 Authorization:
 RBAC,Node,ABAC,wenhook
+
+
 
