@@ -182,7 +182,15 @@ backup and restore
 
 take backups of yaml files in github
 take etcd backup 
+kubectl get all --namespace=kube-system (get infor reg kube components)
+kubectl logs etcd-controlplane -n kube-system
+kubectl -n alpha get all
 
+
+
+
+
+**************************************************************************************************************************
 
 image security
 docker login private-reg.io
