@@ -22,3 +22,11 @@ IfNotPresent: Kubernetes will pull the image if it is not already present on the
 Never: With this policy, Kubernetes will never pull the image from the repository. It will strictly use local images. This policy is suitable for scenarios where you're using custom or pre-loaded images and don't want any automatic updates from remote repositories.
 
 
+troubleshoot nodes:
+we can do it with kubectl describe nodes nodename
+its shows outofdisk, memoryptressure, diskpressuree, ready these kind of flgas, we can check the node health depending on this (true/false)
+
+check status:
+service kubelet status
+
+
