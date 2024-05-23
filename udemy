@@ -50,6 +50,16 @@ the node selector attribute is added to the deployment yml file : this can cause
 we do it by specifiying lables in the yaml file of the node
 this can be useful when we need to run the appln on a node having windows installed on it or some kind of arm processors installed on them.
 
+There are two types of node affinity:
+
+RequiredDuringSchedulingIgnoredDuringExecution: This specifies that the pod won't be scheduled on a node unless it satisfies the affinity rules. However, if the node doesn't match the affinity rules during pod execution (e.g., if labels on the node change), the pod will still continue to run on that node.
+
+PreferredDuringSchedulingIgnoredDuringExecution: This expresses a preference for scheduling a pod onto a node with the specified labels, but it's not a hard requirement. If no node matches the affinity rules, the pod will still be scheduled. However, nodes that match the affinity rules will be given a higher priority during scheduling.
+
+Node affinity can be defined based on node labels or node affinity expressions. Here's an example YAML snippet demonstrating node affinity based on node labels:
+
+Node affinity can be particularly useful for scenarios such as ensuring that certain pods are co-located with specific hardware, ensuring data locality, or separating workloads onto different nodes for isolation.
+
 node affinity:
 1)preffered-->if you find the label schedule it or else its ok
 2)required-->same as node selectors
@@ -67,6 +77,8 @@ Can k9 function without master plane?
 yes: we can store the yaml files in a directory and kubelet reads info from here 
 this directory can be /etc/k8/manifests from which it is destined to take pod info.
 THese are called statis pods which are created by the kubelet without the intervention of the master plane but we can only create pods and not deployment or services, we will get the path in the pod manifest file
+Static pods in Kubernetes are a way to run pods directly on a node without the involvement of the Kubernetes control plane. Unlike regular pods managed by the Kubernetes API server, static pods are managed directly by the Kubelet daemon on a specific node.
+Static pods are not managed by the Kubernetes API server. Instead, they are detected and managed by the Kubelet running on the node where the pods are supposed to run.
 
 
 K8 can have multiple scheduler
@@ -101,12 +113,19 @@ when we apply the replicaset will be taken down to 0 and then again comes back t
 2)Rolling update:
 we take down older version and bring new one, one by one (default)
 
+kubectl rollout undo
+
 
 using args command in .yaml file eg: args: ["10"]
 it overrides the cmd command of the docker 
 using "command" overrides the entrypoint command of the docker
 
 always take the env variables from the configmap file and add an additional attribute called envfrom in the pod definition file of deployment
+
+You can mount a Secret or ConfigMap as a volume inside your pod, making its data available to the containers running in the pod.
+
+We specify an environment variable DATABASE_URL.
+We use the valueFrom field with configMapKeyRef to reference the database_url key from the ConfigMap named my-configmap.
 
 "spec:
   containers:
@@ -219,6 +238,10 @@ pvt key and public key is used seperately-->assym
 
 Authorization:
 RBAC,Node,ABAC,wenhook
+
+Nw policies:
+we can add a nw policy on a pod to accept traffic from a particular pod on port 3306
+
 
 
 
