@@ -242,6 +242,15 @@ RBAC,Node,ABAC,wenhook
 Nw policies:
 we can add a nw policy on a pod to accept traffic from a particular pod on port 3306
 
+RBAC
+
+A RoleBinding associates a Role (or ClusterRole) with a set of users, groups, or service accounts within a specific namespace. This essentially means "grant the permissions defined in this Role to these users or service accounts in this namespace."
+
+kubectl get roles
+kubectl describe roles
+kubectl auth can-i create deployments (check if yiu can create dep)
+kubectl auth can-i delete pod
+kubectl auth can-i list pods --as dev-user
 
 
 
